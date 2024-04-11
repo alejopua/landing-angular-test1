@@ -10,13 +10,18 @@ import { Product, productsList } from '../products/products.mock';
 export class ProductDetailComponent implements OnInit {
   product?: Product;
   productList?: Product[] = productsList;
+  loading: boolean = true;
+
   constructor(private _route: ActivatedRoute) {}
 
   ngOnInit(): void {
-    this._route.params.subscribe((params) => {
-      this.product = this.productList?.find(
-        (product) => product.id == params['productId']
-      );
-    });
+    setTimeout(() => {
+      this._route.params.subscribe((params) => {
+        this.product = this.productList?.find(
+          (product) => product.id == params['productId']
+        );
+        this.loading = false;
+      });
+    }, 1500);
   }
 }
