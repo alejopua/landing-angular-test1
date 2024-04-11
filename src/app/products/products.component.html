@@ -1,1 +1,25 @@
-<p>products works!</p>
+<h1>Cleaning products</h1>
+<div class="border rounded m-3 px-3 py-2">
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Product</th>
+        <th scope="col">Price</th>
+        <th scope="col">Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let product of products; let i = index">
+        <th scope="row">{{ i + 1 }}</th>
+        <td>{{ product.name }}</td>
+        <td>{{ product.price }}</td>
+        <td>
+          <a [routerLink]="['/products', product.name, product.description]"
+            >Detail</a
+          >
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
