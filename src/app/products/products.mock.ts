@@ -23,11 +23,46 @@ export const productsList: Product[] = [
     price: 2,
     description: 'A great sponge for sponging',
   },
+  {
+    id: 5,
+    name: 'Vacuum',
+    price: 100,
+    description: 'A great vacuum for vacuuming',
+  },
+  {
+    id: 6,
+    name: 'Bucket',
+    price: 8,
+    description: 'A great bucket for bucketing',
+  },
+  {
+    id: 7,
+    name: 'Soap',
+    price: 1,
+    description: 'A great soap for soaping',
+  },
+  {
+    id: 8,
+    name: 'Bleach',
+    price: 3,
+    description: 'A great bleach for bleaching',
+  },
+  {
+    id: 9,
+    name: 'Gloves',
+    price: 4,
+    description: 'A great gloves for gloving',
+  },
+  {
+    id: 10,
+    name: 'chlorine',
+    price: 3,
+  },
 ];
 
 export interface Product {
   id: number;
   name: string;
   price: number;
-  description: string;
+  description?: string;
 }
