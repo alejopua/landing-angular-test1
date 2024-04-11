@@ -16,9 +16,7 @@
         <td>{{ product.name }}</td>
         <td>{{ product.price }}</td>
         <td>
-          <a [routerLink]="['/products', product.name, product.description]"
-            >Detail</a
-          >
+          <a [routerLink]="['/products', product.id]">Detail</a>
         </td>
       </tr>
     </tbody>
