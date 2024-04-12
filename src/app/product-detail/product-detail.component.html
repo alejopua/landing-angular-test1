@@ -1,8 +1,10 @@
 <ng-container *ngIf="!loading">
   <h1>Product: {{ product?.name }}</h1>
   <div>
-    <p>Price: {{ product?.price | currency }}</p>
-    <p *ngIf="product?.description">Description: {{ product?.description }}</p>
+    <h2 [ngStyle]="{ color: color }">Price: {{ product?.price | currency }}</h2>
+    <h3 *ngIf="product?.description">
+      Description: {{ product?.description }}
+    </h3>
   </div>
 </ng-container>
 
