@@ -1,0 +1,44 @@
+<div class="bg-custom d-flex flex-column border rounded m-3 px-3 py-3">
+  <h1 class="text-center text-white">REACTIVE FORM</h1>
+  <form [formGroup]="formContact" (ngSubmit)="submitForm()">
+    <div class="mb-3">
+      <label for="name" class="form-label text-white">Name</label>
+      <input
+        type="text"
+        class="form-control"
+        id="name"
+        formControlName="name"
+        [ngClass]="{
+          'is-invalid': hasErrors('name', 'required'),
+          'is-valid': !hasErrors('name', 'required') && statusValue('name')
+        }"
+      />
+      <div class="text-danger" *ngIf="hasErrors('name', 'required')">
+        name is required.
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="email" class="form-label text-white">Email</label>
+      <input
+        type="email"
+        class="form-control"
+        id="email"
+        formControlName="email"
+        [ngClass]="{
+          'is-invalid':
+            hasErrors('email', 'required') || hasErrors('email', 'email'),
+          'is-valid':
+            (!hasErrors('email', 'required') || !hasErrors('email', 'email')) &&
+            statusValue('email')
+        }"
+      />
+      <div class="text-danger" *ngIf="hasErrors('email', 'email')">
+        email invalid.
+      </div>
+      <div class="text-danger" *ngIf="hasErrors('email', 'required')">
+        email is required.
+      </div>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+</div>
