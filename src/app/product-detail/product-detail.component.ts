@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Params } from '@angular/router';
 import { IProduct } from '../models/product.model';
 import { ApiProductsService } from '../services/api-products.service';
 
@@ -19,13 +19,23 @@ export class ProductDetailComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this._route.params.subscribe((params) => {
-      this._apiService
-        .getProduct(Number(params['productId']))
-        .subscribe((data: IProduct) => (this.product = data));
-
-      this.color = (this.product?.price as number) > 300 ? 'red' : '';
-      this.loading = false;
+    this._route.params.subscribe({
+      next: (params: Params) => {
+        this._apiService.getProduct(Number(params['productId'])).subscribe({
+          next: (data: IProduct) => {
+            this.product = data;
+            this.color = (this.product?.price as number) > 300 ? 'red' : '';
+            this.loading = false;
+          },
+          error: (err: any) => {
+            console.error(err);
+            this.loading = false;
+          },
+        });
+      },
+      error: (err: any) => {
+        console.error(err);
+      },
     });
   }
 }
