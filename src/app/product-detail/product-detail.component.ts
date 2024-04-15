@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Product, productsList } from '../products/products.mock';
+import { IProduct } from '../models/product.model';
 
 @Component({
   selector: 'app-product-detail',
@@ -8,8 +9,8 @@ import { Product, productsList } from '../products/products.mock';
   styleUrls: ['./product-detail.component.css'],
 })
 export class ProductDetailComponent implements OnInit {
-  product?: Product;
-  productList?: Product[] = productsList;
+  product?: IProduct;
+  products?: IProduct[] = [];
   loading: boolean = true;
   color?: string;
 
@@ -18,10 +19,10 @@ export class ProductDetailComponent implements OnInit {
   ngOnInit(): void {
     setTimeout(() => {
       this._route.params.subscribe((params) => {
-        this.product = this.productList?.find(
+        this.product = this.products?.find(
           (product) => product.id == params['productId']
         );
-        this.color = (this.product?.price as number) > 10 ? 'red' : '';
+        this.color = (this.product?.price as number) > 300 ? 'red' : '';
         this.loading = false;
       });
     }, 1500);

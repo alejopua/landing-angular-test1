@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Category, IProducts } from '../models/product.model';
+import { Category, IProduct } from '../models/product.model';
 
 @Injectable({
   providedIn: 'root',
@@ -11,27 +11,27 @@ export class ApiProductsService {
 
   constructor(private _httpClient: HttpClient) {}
 
-  public getAllProducts(): Observable<IProducts[]> {
-    return this._httpClient.get<IProducts[]>(this.baseUrl);
+  public getAllProducts(): Observable<IProduct[]> {
+    return this._httpClient.get<IProduct[]>(this.baseUrl);
   }
 
-  public getProduct(id: number): Observable<IProducts> {
-    return this._httpClient.get<IProducts>(`${this.baseUrl}/${id}`);
+  public getProduct(id: number): Observable<IProduct> {
+    return this._httpClient.get<IProduct>(`${this.baseUrl}/${id}`);
   }
 
   public getCategories(): Observable<Category[]> {
     return this._httpClient.get<Category[]>(`${this.baseUrl}/categories`);
   }
 
-  public postProduct(product: IProducts): Observable<IProducts> {
-    return this._httpClient.post<IProducts>(`${this.baseUrl}`, product);
+  public postProduct(product: IProduct): Observable<IProduct> {
+    return this._httpClient.post<IProduct>(`${this.baseUrl}`, product);
   }
 
-  public updateProduct(id: number, product: IProducts): Observable<IProducts> {
-    return this._httpClient.post<IProducts>(`${this.baseUrl}/${id}`, product);
+  public updateProduct(id: number, product: IProduct): Observable<IProduct> {
+    return this._httpClient.post<IProduct>(`${this.baseUrl}/${id}`, product);
   }
 
-  public deleteProduct(id: number): Observable<IProducts> {
-    return this._httpClient.delete<IProducts>(`${this.baseUrl}/${id}`);
+  public deleteProduct(id: number): Observable<IProduct> {
+    return this._httpClient.delete<IProduct>(`${this.baseUrl}/${id}`);
   }
 }

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { IProducts } from '../models/product.model';
+import { IProduct } from '../models/product.model';
 import { ApiProductsService } from '../services/api-products.service';
 
 @Component({
@@ -8,13 +8,13 @@ import { ApiProductsService } from '../services/api-products.service';
   styleUrls: ['./products.component.css'],
 })
 export class ProductsComponent implements OnInit {
-  products: IProducts[] = [];
+  products: IProduct[] = [];
 
   constructor(private _apiService: ApiProductsService) {}
 
   ngOnInit(): void {
     this._apiService
       .getAllProducts()
-      .subscribe((data: IProducts[]) => (this.products = data));
+      .subscribe((data: IProduct[]) => (this.products = data));
   }
 }
