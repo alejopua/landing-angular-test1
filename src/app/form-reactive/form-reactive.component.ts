@@ -10,6 +10,7 @@ export class FormReactiveComponent implements OnInit, OnDestroy {
   formContact: FormGroup;
   userName: string = 'Peter';
   typeDni: string = 'DNI';
+  showDni: boolean = false;
 
   constructor(private form: FormBuilder) {
     this.formContact = this.form.group({
@@ -17,7 +18,6 @@ export class FormReactiveComponent implements OnInit, OnDestroy {
       surname: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       typeDni: [''],
-      dni: ['', Validators.required],
     });
   }
 
@@ -26,6 +26,7 @@ export class FormReactiveComponent implements OnInit, OnDestroy {
     this.formContact.get('name')?.disable();
 
     this.formContact.get('typeDni')?.valueChanges.subscribe((value) => {
+      this.showDni = value != '';
       this.typeDni = value;
     });
   }

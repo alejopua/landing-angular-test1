@@ -65,21 +65,8 @@
         <option value="Visa">Visa</option>
       </select>
     </div>
-    <div class="mb-3">
-      <label for="dni" class="form-label text-white">{{ typeDni }}</label>
-      <input
-        type="number"
-        class="form-control"
-        id="dni"
-        formControlName="dni"
-        [ngClass]="{
-          'is-invalid': hasErrors('dni', 'required'),
-          'is-valid': !hasErrors('dni', 'required') && statusValue('dni')
-        }"
-      />
-      <div class="text-danger" *ngIf="hasErrors('dni', 'required')">
-        {{ typeDni }} is required.
-      </div>
+    <div class="mb-3" *ngIf="showDni">
+      <dni-input [typeDni]="typeDni" />
     </div>
     <button type="submit" class="btn btn-primary">Submit</button>
   </form>
