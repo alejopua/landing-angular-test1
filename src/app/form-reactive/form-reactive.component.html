@@ -58,32 +58,27 @@
     </div>
     <div class="mb-3">
       <label for="typeDni" class="form-label text-white">Type DNI:</label>
-      <select class="form-select" id="typeDni">
-        <option value="1">Passport</option>
-        <option value="2">ID Card</option>
-        <option value="3">Citizenship</option>
-        <option value="4">Visa</option>
+      <select class="form-select" id="typeDni" formControlName="typeDni">
+        <option value="Passport">Passport</option>
+        <option value="ID Card">ID Card</option>
+        <option value="Citizenship">Citizenship</option>
+        <option value="Visa">Visa</option>
       </select>
     </div>
     <div class="mb-3">
-      <label for="dni" class="form-label text-white">DNI</label>
+      <label for="dni" class="form-label text-white">{{ typeDni }}</label>
       <input
-        type="dni"
+        type="number"
         class="form-control"
         id="dni"
         formControlName="dni"
         [ngClass]="{
-          'is-invalid': hasErrors('dni', 'required') || hasErrors('dni', 'dni'),
-          'is-valid':
-            (!hasErrors('dni', 'required') || !hasErrors('dni', 'dni')) &&
-            statusValue('dni')
+          'is-invalid': hasErrors('dni', 'required'),
+          'is-valid': !hasErrors('dni', 'required') && statusValue('dni')
         }"
       />
-      <div class="text-danger" *ngIf="hasErrors('dni', 'dni')">
-        dni invalid.
-      </div>
       <div class="text-danger" *ngIf="hasErrors('dni', 'required')">
-        dni is required.
+        {{ typeDni }} is required.
       </div>
     </div>
     <button type="submit" class="btn btn-primary">Submit</button>

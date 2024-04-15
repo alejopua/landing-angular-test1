@@ -9,18 +9,25 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class FormReactiveComponent implements OnInit {
   formContact: FormGroup;
   userName: string = 'Peter';
+  typeDni: string = 'DNI';
 
   constructor(private form: FormBuilder) {
     this.formContact = this.form.group({
       name: ['', Validators.required],
       surname: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
+      typeDni: [''],
+      dni: ['', Validators.required],
     });
   }
 
   ngOnInit(): void {
     this.formContact.get('name')?.setValue(this.userName);
     this.formContact.get('name')?.disable();
+
+    this.formContact.get('typeDni')?.valueChanges.subscribe((value) => {
+      this.typeDni = value;
+    });
   }
 
   statusValue(controlName: string) {
