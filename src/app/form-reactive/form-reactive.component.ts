@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
@@ -6,7 +6,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   templateUrl: './form-reactive.component.html',
   styleUrls: ['./form-reactive.component.css'],
 })
-export class FormReactiveComponent implements OnInit {
+export class FormReactiveComponent implements OnInit, OnDestroy {
   formContact: FormGroup;
   userName: string = 'Peter';
   typeDni: string = 'DNI';
@@ -28,6 +28,10 @@ export class FormReactiveComponent implements OnInit {
     this.formContact.get('typeDni')?.valueChanges.subscribe((value) => {
       this.typeDni = value;
     });
+  }
+
+  ngOnDestroy(): void {
+    console.log('Destroy');
   }
 
   statusValue(controlName: string) {
