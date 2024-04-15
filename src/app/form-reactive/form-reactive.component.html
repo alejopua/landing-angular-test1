@@ -56,6 +56,36 @@
         email is required.
       </div>
     </div>
+    <div class="mb-3">
+      <label for="typeDni" class="form-label text-white">Type DNI:</label>
+      <select class="form-select" id="typeDni">
+        <option value="1">Passport</option>
+        <option value="2">ID Card</option>
+        <option value="3">Citizenship</option>
+        <option value="4">Visa</option>
+      </select>
+    </div>
+    <div class="mb-3">
+      <label for="dni" class="form-label text-white">DNI</label>
+      <input
+        type="dni"
+        class="form-control"
+        id="dni"
+        formControlName="dni"
+        [ngClass]="{
+          'is-invalid': hasErrors('dni', 'required') || hasErrors('dni', 'dni'),
+          'is-valid':
+            (!hasErrors('dni', 'required') || !hasErrors('dni', 'dni')) &&
+            statusValue('dni')
+        }"
+      />
+      <div class="text-danger" *ngIf="hasErrors('dni', 'dni')">
+        dni invalid.
+      </div>
+      <div class="text-danger" *ngIf="hasErrors('dni', 'required')">
+        dni is required.
+      </div>
+    </div>
     <button type="submit" class="btn btn-primary">Submit</button>
   </form>
 </div>
