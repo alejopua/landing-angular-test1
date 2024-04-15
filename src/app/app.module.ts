@@ -9,6 +9,7 @@ import { ProductsComponent } from './products/products.component';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FormReactiveComponent } from './form-reactive/form-reactive.component';
+import { DniComponent } from './form-reactive/dni/dni.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { FormReactiveComponent } from './form-reactive/form-reactive.component';
     ProductsComponent,
     ProductDetailComponent,
     FormReactiveComponent,
+    DniComponent,
   ],
   imports: [
     BrowserModule,
