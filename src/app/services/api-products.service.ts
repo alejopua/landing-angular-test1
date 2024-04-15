@@ -26,4 +26,11 @@ export class ApiProductsService {
   public postProduct(product: IProducts): Observable<IProducts> {
     return this._httpClient.post<IProducts>(`${this.baseUrl}`, product);
   }
+
+  public putProduct(
+    id: number | string,
+    product: IProducts
+  ): Observable<IProducts> {
+    return this._httpClient.post<IProducts>(`${this.baseUrl}/${id}`, product);
+  }
 }
