@@ -15,7 +15,7 @@ export class ApiProductsService {
     return this._httpClient.get<IProducts[]>(this.baseUrl);
   }
 
-  public getProduct(id: number | string): Observable<IProducts> {
+  public getProduct(id: number): Observable<IProducts> {
     return this._httpClient.get<IProducts>(`${this.baseUrl}/${id}`);
   }
 
@@ -27,10 +27,11 @@ export class ApiProductsService {
     return this._httpClient.post<IProducts>(`${this.baseUrl}`, product);
   }
 
-  public putProduct(
-    id: number | string,
-    product: IProducts
-  ): Observable<IProducts> {
+  public updateProduct(id: number, product: IProducts): Observable<IProducts> {
     return this._httpClient.post<IProducts>(`${this.baseUrl}/${id}`, product);
+  }
+
+  public deleteProduct(id: number): Observable<IProducts> {
+    return this._httpClient.delete<IProducts>(`${this.baseUrl}/${id}`);
   }
 }
