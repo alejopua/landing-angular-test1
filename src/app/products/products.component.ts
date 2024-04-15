@@ -13,9 +13,8 @@ export class ProductsComponent implements OnInit {
   constructor(private _apiService: ApiProductsService) {}
 
   ngOnInit(): void {
-    this._apiService.getAllProducts().subscribe((data: IProducts[]) =>
-      // this.products = data
-      console.log(data)
-    );
+    this._apiService
+      .getAllProducts()
+      .subscribe((data: IProducts[]) => (this.products = data));
   }
 }
