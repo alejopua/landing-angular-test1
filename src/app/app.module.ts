@@ -10,6 +10,7 @@ import { ProductDetailComponent } from './product-detail/product-detail.componen
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FormReactiveComponent } from './form-reactive/form-reactive.component';
 import { DniComponent } from './form-reactive/dni/dni.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { DniComponent } from './form-reactive/dni/dni.component';
     AppRoutingModule,
     FormsModule, // FORMS FOR TEMPLATE DRIVEN FORMS
     ReactiveFormsModule, // FORMS FOR REACTIVE FORMS
+    HttpClientModule, // HTTP CLIENT MODULE for API requests
   ],
   providers: [],
   bootstrap: [AppComponent],
